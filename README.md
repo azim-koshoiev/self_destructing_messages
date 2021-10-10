@@ -1,24 +1,8 @@
-# README
+# Self Destructing Messages
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Flow:
+1. User posts message to the REST API endpoint
+2. App generates a link and returns it as a response
+3. User can do request to the provided link and see saved message only once
+4. On second request info message “You already requested this message” should be
+returned
