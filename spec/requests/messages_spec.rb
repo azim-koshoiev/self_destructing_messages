@@ -89,6 +89,12 @@ RSpec.describe "Messages", type: :request do
         })
 
         expect(response_body["link"]).not_to be_empty
+        expect(response_body["link"]).to include(ENV['app_host'])
+      end
+
+      it "returns valid link to message" do
+        get response_body["link"]
+        expect(response).to have_http_status(:ok)
       end
     end
 

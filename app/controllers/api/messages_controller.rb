@@ -14,7 +14,10 @@ class Api::MessagesController < ApplicationController
 
   def create
     message = Message.create!(message_params)
-    render json: { success: true, link: message.id }, status: :created
+
+    link = AppServices::BuildMessageLink.call(message: message)
+
+    render json: { success: true, link: link.payload }, status: :created
   rescue ActiveRecord::RecordInvalid => e
     render json: { success: false, error: e.message }, status: :unprocessable_entity
   end
